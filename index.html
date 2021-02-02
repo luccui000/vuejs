@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./assets/js/vue.js"></script>
+    <style>
+        *{ 
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            color: #fff;
+            background-color: #6f99aa;
+        }
+        .container  {
+            display: flex;
+        }
+        .content {
+            padding-left: 20px;
+        } 
+        .content a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .color {
+            margin-top: 10px;
+            display: flex;  
+        }
+        .box1 {
+            width: 20px;
+            height: 20px;
+            background-color: red; 
+        }
+        .box2 {
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            margin-left: 5px;
+        }
+        .box3 {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            margin-left: 5px;
+        }
+        .content button {
+            margin-top: 10px;
+            width: 150px;
+            height: 30px;
+            background-color: #ff3945;
+            border: 2px solid transparent;
+            border-radius: 2px;
+        }
+        .content button:hover {
+            background-color: #ff3945a3;
+        } 
+        .toast {
+            width: 300px;
+            height: 60px;
+            background-color: #fff;
+            border-left: 5px solid tomato;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            color: #000;
+        }
+        .test {
+            margin-top: 10px;
+            width: 300px;
+            height: 235px;
+            background-color: teal;
+            border-radius: 5px;
+        }
+        .test li {
+            margin-top: 10px;
+            list-style-type: none;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hàng hóa</h2>
+    <div id="app">
+        <div class="container">
+            <div class="image">
+                <img :src="src" alt="">
+            </div>
+            <div class="content"> 
+                <a :href="url" :target="target">{{ title }}</a> 
+                <p>Brand: {{ brand }}</p>
+                <p :style="objectBgClasses">Price: {{ formatPrice() }}</p>
+                <span>Color: {{ color }} </span>
+                <div class="color">
+                    <div class="box1" v-on:click="setRed"></div>
+                    <div class="box2" v-on:click="setBlue"></div>
+                    <div class="box3" v-on:click="setGreen"></div>
+                </div> 
+                <button @click="showProduct">Chọn Mua</button>
+                <ul class="test">
+                    <li v-for="user in userFilter">
+                        {{ user.username }} - {{ user.age }} - {{ user.address }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div :class="{ toast: isToast }" v-html="displaytest"> 
+        </div>
+    </div>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
